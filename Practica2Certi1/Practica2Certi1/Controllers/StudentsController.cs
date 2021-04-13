@@ -25,9 +25,12 @@ namespace Practica2Certi1.Controllers
         }
 
         [HttpPut]
-        public Student UpdateStudent([FromBody] Student student) // b. Update User
+        public Student UpdateStudent([FromBody] Student student, List<Student> lista) // b. Update User
         {
-            student.NombreDePila = "actualizado";
+            foreach(Student s in lista)
+                if(student == s)
+                    s.NombreDePila = "actualizado";
+
             return student;
         }
 
